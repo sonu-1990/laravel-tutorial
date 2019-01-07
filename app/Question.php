@@ -53,4 +53,22 @@ class Question extends Model
     {
         return $this->created_at->diffForHumans();
     }
+
+    /**
+     * Get the status of the answer.
+     * @return String Name of the class.
+     */
+    public function getStatusAttribute()
+    {
+        if ($this->answers > 0 ) {
+            if ($this->best_answer_id) {
+
+                return "answered-accepted";
+            }
+            return "answered";
+        }
+        return "unanswered";
+    }
+
+
 }
