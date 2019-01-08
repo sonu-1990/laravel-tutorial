@@ -44,12 +44,17 @@
                                 {{ str_limit($question->body, 250) }}
                                 <div class="ml-auto">
                                     <p>
-                                        <a href="{{ route('questions.edit', $question->id )}}" class="btn btn-sm btn-info">Edit</a>
-                                        <form method="POST" action="{{ route('questions.destroy', $question->id) }}">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
-                                        </form>
+                                        @if (Auth::user()->can('update-question', $question))
+                                            <a href="{{ route('questions.edit', $question->id )}}" class="btn btn-sm btn-info">Edit</a>
+                                        @endif
+
+                                        @if (Auth::user()->can('delete-question', $question))
+                                            <form method="POST" action="{{ route('questions.destroy', $question->id) }}">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                                            </form>
+                                        @endif
                                     </p>
 
                                 </div>
