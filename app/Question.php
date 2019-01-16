@@ -78,4 +78,13 @@ class Question extends Model
         return \Parsedown::instance()->text($this->body);
     }
 
+    /**
+     * Question can have may answers
+     * @return Object Question has many answers.
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
 }
