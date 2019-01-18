@@ -25,6 +25,15 @@ class Answer extends Model
     }
 
     /**
+     * Get the created_date in human readable format
+     * @return Created_date
+     */
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
+    /**
      * Return html formatted text of body field.
      */
     public function getBodyHtmlAttribute()

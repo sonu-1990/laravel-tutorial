@@ -19,5 +19,37 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2>{{ $question->answers_count ." ". str_plural('Answer', $question->answers_count)}}</h2>
+                    </div>
+                    <hr/>
+                    @foreach($question->answers as $answer)
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                {!! $answer->body_html !!}
+                                <p>{{ $answer->created_date }}</p>
+                                <p>
+                                    <a href="{{ $answer->user->url }}">
+                                        <img src="{{ $answer->user->gravatar }}" />
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="{{ $answer->user->url }}">
+                                        {{ $answer->user->name }}
+                                    </a>
+                                </p>
+
+                            </div>
+                        </div>
+
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
