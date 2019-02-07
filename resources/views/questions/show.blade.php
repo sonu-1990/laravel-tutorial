@@ -24,8 +24,21 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
+                        <div class="row vote-controls">
+                            <div class="col-md-12">
+                                <a title="This question is useful." class="vote-up">Vote Up</a>
+                            </div>
+                            <div class="col-md-12">
+                                <a title="This question is useless." class="vote-down off">Vote Down</a>
+                            </div>
+                            <div class="col-md-12">
+                                <a title="Click to mark as a favourite question (Click again to undo)" class="favourite">Favourite</a>
+                                <span class="favourites-count">123</span>
+                            </div>
+                        </div>
                         <h2>{{ $question->answers_count ." ". str_plural('Answer', $question->answers_count)}}</h2>
                     </div>
+
                     <hr/>
                     @foreach($question->answers as $answer)
                         <div class="panel panel-default">
